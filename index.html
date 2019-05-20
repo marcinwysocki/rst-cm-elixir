@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Debugging Elixir in production</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img style="border: none; box-shadow: none;" src="/images/elixir.png">
+
+					<aside class="notes">
+						<ul>
+							<li>Kto korzysta produkcyjnie? Kto hobbystycznie?</li>
+							<li>stosunkowo młody - Jose Valim, 2011 rok</li>
+							<li>w RST na prod - unikatowa sytuacja</li>
+						</ul>
+					</aside>
+				</section>
+				
+				<section>
+					<h1>Jakiś obrazek pod chęć wdrożenie nowej technologii 🤔</h1>
+					
+					
+					<aside class="notes">
+						<ul>
+							<li>wdrażanie tak niszowej technologii w projekcie</li>
+							<li>jak przekonać biznes?</li>
+							<li>u nas biznes/architekci przyszli do zespołu</li>
+							<li>"róbcie", no i zrobili</li>
+						</ul>
+					</aside>
+				</section>
+				
+				<section>
+					<h1>Elixir - blaski i cienie</h1>
+					
+					<p>Marcin Wysocki</p>
+					<p><a href="mailto:wysocki@undef.pl">wysocki@undef.pl</a></p>
+				</section>
+				
+				<section>
+					<img style="border: none; box-shadow: none;" src="/images/trans4.jpg">
+					
+					<aside class="notes">
+						<ul>
+							<li>RST od wielu lat system Trans.eu</li>
+							<li>komunikator integralną częścią</li>
+							<li>serwer i klient desktopowy w C++</li>
+							<li>własny protokół binarny, sporo logiki w kliencie</li>
+							<li>10+ lat, dług technologiczny - kosztowny rozwój</li>
+							<li>problemy ze skalowaniem</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img style="border: none; box-shadow: none;" src="/images/trans6.png">
+					
+					<aside class="notes">
+						<ul>
+							<li>stare - nie po drodze z nową platformą</li>
+							<li>skierowana do innego segmentu rynku</li>
+							<li>przywidywany wzrost liczby użytkowników</li>
+							<li>integracje z innymi apkami klienckimi (w tym webową)</li>
+							<li>nowe funkcjonalności - duże koszty</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<img style="border: none; box-shadow: none;  margin-right: 125px;" src="/images/xmpp.png">
+					<img style="border: none; box-shadow: none;" src="/images/ejabberd.png">
+					
+					<aside class="notes">
+						<ul>
+							<li>stare - nie po drodze z nową platformą</li>
+							<li>skierowana do innego segmentu rynku</li>
+							<li>przywidywany wzrost liczby użytkowników</li>
+							<li>integracje z innymi apkami klienckimi (w tym webową)</li>
+							<li>nowe funkcjonalności - duże koszty</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Then what?</h2>
+					<h2>🤷</h2> 
+				</section>
+				<section>
+					<h2>Logs and metrics</h2>
+					<section>
+						<ul>
+							<li>observing system in real time</li>
+							<li>diagnosing and predicting anomalies</li>
+							<li>correlations between different metrics</li>
+						</ul>
+					</section>
+					<section>
+						<p>You want a <em>lot</em> of metrics, so take care of performance and handle overload!</p>
+					</section>
+				</section>
+				<section>
+					<h2>All those other tools</h2>
+				</section>
+				<section>
+					<h2>To sum it up:</h2>
+					<ol>
+						<li>logs and metrics</li>
+						<li>remote shell</li>
+						<li>etop</li>
+						<li>observer</li>
+						<li>tracing</li>
+					</ol>
+				</section>
+				<section>
+					<h1>Thanks!</h1>
+
+					<p>Marcin Wysocki</p>
+					<p><a href="mailto:wysocki@undef.pl">wysocki@undef.pl</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				transition: 'convex',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
