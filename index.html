@@ -126,13 +126,13 @@
                         </ul>
                     </aside>
                 </section>
-
+                
                 <section>
                     <div style="display: flex; flex-direction: row;">
-                        <pre style="box-shadow: none; font-size: 11px;">
-                    <code data-trim data-noescape class="erlang">
+                            <pre style="box-shadow: none; font-size: 11px;">
+                                    <code data-trim data-noescape class="erlang">
                     -module(some_erlang_module).
-
+                    
                     -export([map/2]).
                     
                     map(_, []) ->
@@ -141,15 +141,15 @@
                         do_map([], Func, List);
                     map(_, _) ->
                         erlang:error(badarg).
-                    
+            
                     do_map(Acc, _, []) ->
                         lists:reverse(Acc);
                     do_map(Acc, Fun, [Head | Tail]) ->
                         Mapped = Fun(Head),
                         do_map([Mapped | Acc], Fun, Tail).
-                    </code>
-                </pre>
-                    <pre style="box-shadow: none; font-size: 11px;">
+                </code>
+            </pre>
+            <pre style="box-shadow: none; font-size: 11px;">
                     <code data-trim data-noescape class="elixir">
                     defmodule SomeElixirModule do
                       def map(_, []), do: []
@@ -160,18 +160,92 @@
                       
                       defp do_map(acc, func, [head | tail]) do
                         mapped = func.(head)
-                      
+                        
                         do_map([mapped | acc], func, tail)
                       end
                     end
                     </code></pre>
                 </div>
+                
+                <aside class="notes">
+                    <ul>
+                        <li>Elixir - składnia inspirowana Rubym na VM Erlanga</li>
+                        <li>CoffeScript vs JS</li>
+                        <li>Erlang i Elixir będę stosował zamiennie</li>
+                    </ul>
+                </aside>
+            </section>
+            
+            <section>
+                <h3>Język funkcyjny</h3>
+                <pre style="box-shadow: none; font-size: 11px;">
+                        <code data-trim data-noescape class="elixir">
+                        przykład                       </code></pre>
+
+                    
+                    <aside class="notes">
+                        <ul>
+                            <li>Funkcje zawarte w modułach</li>
+                            <li>Operacje na strukturach danych i wartościach, brak przekazywania przez referencję</li>
+                            <li>Pattern matching</li>
+                            <li>Kompozycja przez pipe</li>
+                            <li>Pragmatyczny - efekty uboczne</li>
+                        </ul>
+                    </aside>
+            </section>
+                
+            <section>
+                <h3>Współbieżność - model aktorowy</h3>
+                <img style="border: none; box-shadow: none;" src="/images/actors.png">
+                <p style="font-size: 0.35em; margin-top: 50px;">https://www.brianstorti.com/the-actor-model/</p>
+                
+
+                <aside class="notes">
+                    <ul>
+                        <li>Aktorzy - "procesy"</li>
+                        <li>VM, nie systemowe; bardzo lekkie, moża tworzyć/usuwać łatwo</li>
+                        <li>Nie współdzielą pamięci</li>
+                        <li>Własne GC</li>
+                        <li>Komunikacja ściśle przez wiadomości</li>
+                        <li>Synchroniczne przetwarzanie wiadomości</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h3>Wielowątkowość</h3>
+                <pre style="box-shadow: none; font-size: 18px;">
+
+            +--------------------------------------------------------+
+            |                                                        |
+            |  +-----------------+-----------------+                 |
+            |  |                 |                 |                 |
+            |  |  Scheduler # 1  |  Run Queue # 1  <--+              |
+            |  |                 |                 |  |              |
+            |  +-----------------+-----------------+  |              |
+            |                                         |              |
+            |  +-----------------+-----------------+  |              |
+            |  |                 |                 |  |              |
+            |  |  Scheduler # 2  |  Run Queue # 2  <----> Migration  |
+            |  |                 |                 |  |     Logic    |
+            |  +-----------------+-----------------+  |              |
+            |                                         |              |
+            |  +-----------------+-----------------+  |              |
+            |  |                 |                 |  |              |
+            |  |  Scheduler # N  |  Run Queue # N  <--+              |
+            |  |                 |                 |                 |
+            |  +-----------------+-----------------+                 |
+            |                                                        |
+            +--------------------------------------------------------+
+                            </pre>
 
                     <aside class="notes">
                         <ul>
-                            <li>Elixir - składnia inspirowana Rubym na VM Erlanga</li>
-                            <li>CoffeScript vs JS</li>
-                            <li>Erlang i Elixir będę stosował zamiennie</li>
+                            <li>Funkcje zawarte w modułach</li>
+                            <li>Operacje na strukturach danych i wartościach, brak przekazywania przez referencję</li>
+                            <li>Pattern matching</li>
+                            <li>Kompozycja przez pipe</li>
+                            <li>Pragmatyczny - efekty uboczne</li>
                         </ul>
                     </aside>
                 </section>
