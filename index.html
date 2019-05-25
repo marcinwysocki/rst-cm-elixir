@@ -46,7 +46,7 @@
         </section>
 
         <section>
-          <h1>Jakiś obrazek pod chęć wdrożenie nowej technologii 🤔</h1>
+          <h1>🤔</h1>
 
           <aside class="notes">
             <ul>
@@ -304,6 +304,31 @@
         </section>
 
         <section>
+                <h3>Wydajność</h3>
+                <img
+                  style="border: none; box-shadow: none;"
+                  src="/images/clustering.png"
+                />
+                <p style="font-size: 0.35em; margin-top: 50px;">
+                  https://emqx-enterprise-docs-en.readthedocs.io/en/latest/cluster.html
+                </p>
+      
+                <aside class="notes">
+                  <ul>
+                    <li>
+                      To rozwiązanie okazuje się bardzo niewydajne
+                    </li>
+                    <li>Współbieżność nie jest wykorzystana wcale</li>
+                    <li>
+                      Message passing - kolejka wiadomości na ArchiveService rośnie
+                    </li>
+                    <li>Przeciążenie systemu</li>
+                    <li>Typowy błąd początkującego (i nie tylko)</li>
+                  </ul>
+                </aside>
+              </section>
+
+        <section>
           <h2>Siła nawyku</h2>
 
           <div
@@ -441,9 +466,46 @@
           <aside class="notes">
             <ul>
               <li>
-                Problem - zapis każdej przychodzącej wiadomości do archiwum
+                To rozwiązanie okazuje się bardzo niewydajne
               </li>
-              <li>Zapis - req HTTP</li>
+              <li>Współbieżność nie jest wykorzystana wcale</li>
+              <li>
+                Message passing - kolejka wiadomości na ArchiveService rośnie
+              </li>
+              <li>Przeciążenie systemu</li>
+              <li>Typowy błąd początkującego (i nie tylko)</li>
+              <li>
+                Skutki - system nieresponsywny przy ok. 5% wymaganego obciążenia
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Rozwiązanie</h3>
+
+          <img
+            style="border: none; box-shadow: none;"
+            src="/images/ranch.jpg"
+          />
+          <p style="font-size: 0.35em; margin-top: 50px;">
+            http://learningelixir.joekain.com/ranch-application-design/
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>
+                Pula procesów
+              </li>
+              <li>
+                Zaleta - limitowanie maksymalnej jednoczesnej liczby requestów
+              </li>
+              <li>
+                Pula też jest procesem, ale pobiera on tylko PIDy workerów
+              </li>
+              <li>Może zostać przeciążona - powrót do problemu</li>
+              <li>Wtedy konieczne jest zarządzanie kolejką wiadomości</li>
+              <li>Generalnie bardzo dużo kolejek</li>
             </ul>
           </aside>
         </section>
