@@ -159,8 +159,8 @@
         </section>
 
         <section>
-          <div style="display: flex; flex-direction: row;">
-            <pre style="box-shadow: none; font-size: 11px;">
+          <div style="font-size: 25px;">
+            <pre style="box-shadow: none;">
                                     <code data-trim data-noescape class="erlang">
                     -module(some_erlang_module).
                     
@@ -180,11 +180,14 @@
                         do_map([Mapped | Acc], Fun, Tail).
                 </code>
             </pre>
-            <pre style="box-shadow: none; font-size: 11px;">
+            <pre style="box-shadow: none;">
                     <code data-trim data-noescape class="elixir">
                     defmodule SomeElixirModule do
                       def map(_, []), do: []
-                      def map(func, list) when is_function(func) and is_list(list), do: do_map([], func, list)
+
+                      def map(func, list) when is_function(func) and is_list(list), 
+                        do: do_map([], func, list)
+                      
                       def map(_, _), do:  raise ArgumentError
                       
                       defp do_map(acc, _, []), do: Enum.reverse(acc)
