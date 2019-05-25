@@ -358,6 +358,7 @@
                 skutki: min. refactor po nabyciu skilla, max. własny framework
                 symulujący brakujące ficzery, nieutrzymywalne/niedziałające
               </li>
+              <li>przykłady: C# -> React, PHP -> Node, PHP -> Erlang</li>
             </ul>
           </aside>
         </section>
@@ -368,15 +369,15 @@
 
             <aside class="notes">
               <ul>
-                <li>Problem - zapis każdej przychodzącej wiadomości do archiwum</li>
+                <li>
+                  Problem - zapis każdej przychodzącej wiadomości do archiwum
+                </li>
                 <li>Zapis - req HTTP</li>
               </ul>
             </aside>
           </section>
 
           <section>
-            <h3>Prosto i klasycznie</h3>
-
             <pre style="box-shadow: none; font-size: 18px; margin-top: 50px;">
         +----------- +          +--------------------+              +-------------+
         |            |          |                    |              |             |
@@ -387,13 +388,83 @@
             >
             <aside class="notes">
               <ul>
-                <li>Moduł jest instancją klasy</li>
-                <li>Ma wstrzykniętą instację ArchiveService</li>
-                <li>ArchiveService strzela do archiwum</li>
-                <li>Współbieżność? Każda wiadomość w osobnym wątku</li>
+                <li>
+                  OOP
+                  <ul>
+                    <li>Moduł jest instancją klasy</li>
+                    <li>Ma wstrzykniętą instację ArchiveService</li>
+                    <li>Wiadomość przychodzi w kontekście użytkownika</li>
+                    <li>ArchiveService strzela do archiwum</li>
+                    <li>
+                      Współbieżność?
+                      <ul>
+                        <li>Brak (PHP)</li>
+                        <li>
+                          Każda wiadomość w osobnym wątku lub wątek per
+                          użytkownik
+                        </li>
+                        <li>Promise/async</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Erlang
+
+                  <ul>
+                    <li>Moduł jest... modułem, zawiera callbacki</li>
+                    <li>
+                      Są one wywoływane z wiadomością i kontekstem użytkownika
+                    </li>
+                    <li>
+                      ArchiveService to proces (GenServer) - przechowuje lokalny
+                      stan, podobnie jak obiekt
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </aside>
           </section>
+        </section>
+
+        <section>
+          <h3>Problem</h3>
+
+          <img
+            style="border: none; box-shadow: none;"
+            src="/images/msg-match.png"
+          />
+          <p style="font-size: 0.35em; margin-top: 50px;">
+            https://learnyousomeerlang.com/more-on-multiprocessing
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>
+                Problem - zapis każdej przychodzącej wiadomości do archiwum
+              </li>
+              <li>Zapis - req HTTP</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Jak tego uniknąć?</h2>
+          <h2 class="fragment fade-in" style="margin-top: 50px;">
+            Poznać podstawy!
+          </h2>
+
+          <aside class="notes">
+            <ul>
+              <li>
+                Podstawowe koncepcje, nowy paradygmat
+              </li>
+              <li>Konwencje</li>
+              <li>
+                Wzorce
+              </li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -408,7 +479,15 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>
+                To rozwiązanie okazuje się bardzo niewydajne
+              </li>
+              <li>Współbieżność nie jest wykorzystana wcale</li>
+              <li>
+                Message passing - kolejka wiadomości na ArchiveService rośnie
+              </li>
+              <li>Przeciążenie systemu</li>
+              <li>Typowy błąd początkującego (i nie tylko)</li>
             </ul>
           </aside>
         </section>
