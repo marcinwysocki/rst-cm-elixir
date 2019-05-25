@@ -363,6 +363,40 @@
         </section>
 
         <section>
+          <section>
+            <h3>Przykład</h3>
+
+            <aside class="notes">
+              <ul>
+                <li>Problem - zapis każdej przychodzącej wiadomości do archiwum</li>
+                <li>Zapis - req HTTP</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h3>Prosto i klasycznie</h3>
+
+            <pre style="box-shadow: none; font-size: 18px; margin-top: 50px;">
+        +----------- +          +--------------------+              +-------------+
+        |            |          |                    |              |             |
+---msg-->   Module   <---save--->   ArchiveService   <---req/resp--->   Archive   |
+        |            |          |                    |              |             |
+        +----------- +          +--------------------+              +-------------+
+          </pre
+            >
+            <aside class="notes">
+              <ul>
+                <li>Moduł jest instancją klasy</li>
+                <li>Ma wstrzykniętą instację ArchiveService</li>
+                <li>ArchiveService strzela do archiwum</li>
+                <li>Współbieżność? Każda wiadomość w osobnym wątku</li>
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section>
           <h3>Rozejść się!</h3>
           <img
             style="border: none; box-shadow: none;"
