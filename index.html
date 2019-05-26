@@ -227,8 +227,6 @@
         </section>
 
         <section>
-          <h3>Ekosystem</h3>
-
           <img
             style="border: none; box-shadow: none;"
             src="/images/what-do-we-say-to-writing-documentation-13383.png"
@@ -244,7 +242,7 @@
                 i gdzie się wpinać
               </li>
               <li>
-                PoC może pomóc
+                PoC może pomóc, jęśli wykonany przez zespół
               </li>
               <li>
                 Brać pod uwagę wcześniej!
@@ -429,7 +427,12 @@
         <section>
           <h3>Róża bez ognia?</h3>
 
-          <p>https://learnyousomeerlang.com/distribunomicon</p>
+          <a
+            style="position: absolute; left: 0; right: 0;"
+            class="fragment fade-in-then-out"
+            href="https://learnyousomeerlang.com/distribunomicon"
+            >https://learnyousomeerlang.com/distribunomicon</a
+          >
 
           <ul>
             <li class="fragment fade-in">
@@ -444,6 +447,49 @@
               <li>
                 bezpieczenstwo - Erlang cookie
               </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Supervisors</h3>
+
+          <div
+            style="display: flex; flex-direction: row; align-items: stretch;"
+          >
+            <img
+              class="fragment fade-in-then-out"
+              style="border: none; box-shadow: none; flex: 1 0 auto;"
+              src="/images/sup-tree.png"
+            />
+            <img
+              class="fragment fade-in-then-out"
+              style="border: none; box-shadow: none; flex: 1 0 auto;"
+              src="/images/sup-tree-shutdown.png"
+            />
+            <img
+              class="fragment fade-in-then-out"
+              style="border: none; box-shadow: none; flex: 1 0 auto;"
+              src="/images/restart-one-for-one.png"
+            />
+          </div>
+
+          <a
+            style="font-size: 0.35em;"
+            href="https://learnyousomeerlang.com/supervisors"
+          >
+            https://learnyousomeerlang.com/supervisors
+          </a>
+
+          <aside class="notes">
+            <ul>
+              <li>self-healing</li>
+              <li>
+                monitorowanie procesów i ich restart
+              </li>
+              <li>let it crash</li>
+              <li>działa dobrze, jak się dobrze zrobi</li>
+              <li>Przykład błędu (MB): restartowanie procesów, ale wiszące połączenia</li>
             </ul>
           </aside>
         </section>
