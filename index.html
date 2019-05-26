@@ -304,29 +304,84 @@
         </section>
 
         <section>
-                <h3>Wydajność</h3>
-                <img
-                  style="border: none; box-shadow: none;"
-                  src="/images/clustering.png"
-                />
-                <p style="font-size: 0.35em; margin-top: 50px;">
-                  https://emqx-enterprise-docs-en.readthedocs.io/en/latest/cluster.html
-                </p>
-      
-                <aside class="notes">
-                  <ul>
-                    <li>
-                      To rozwiązanie okazuje się bardzo niewydajne
-                    </li>
-                    <li>Współbieżność nie jest wykorzystana wcale</li>
-                    <li>
-                      Message passing - kolejka wiadomości na ArchiveService rośnie
-                    </li>
-                    <li>Przeciążenie systemu</li>
-                    <li>Typowy błąd początkującego (i nie tylko)</li>
-                  </ul>
-                </aside>
-              </section>
+          <h3>Wydajność</h3>
+          <div class="fragment fade-in">
+            <img
+              style="border: none; box-shadow: none;"
+              src="/images/bleacher.png"
+            />
+            <p style="font-size: 0.35em;">
+              https://www.techworld.com/apps-wearables/how-elixir-helped-bleacher-report-handle-8x-more-traffic-3653957/
+            </p>
+          </div>
+
+          <div class="fragment fade-in">
+            <img
+              style="border: none; box-shadow: none;"
+              src="/images/whatsapp.png"
+            />
+            <p style="font-size: 0.35em;">
+              https://www.wired.com/2015/09/whatsapp-serves-900-million-users-50-engineers/
+            </p>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>bardzo dużo rzeczy na raz, niekoniecznie super szybko</li>
+              <li>
+                GC per proces, procesy wywłaszczane (preemptive scheduling)
+              </li>
+              <li>dobre do async IO</li>
+              <li>kiepskie w obliczeniach, lepszy Cpp, Rust</li>
+              <li>współbieżność nastawiona na coś innego, a mianowicie...</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Fault Tolerance</h2>
+
+          <aside class="notes">
+            <ul>
+              <li>Ericsson - sieci telefoniczne muszą działać non-stop</li>
+              <li>
+                dwa aspekty
+              </li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Rozejść się!</h3>
+          <img
+            style="border: none; box-shadow: none;"
+            src="/images/clustering.png"
+          />
+          <p style="font-size: 0.35em; margin-top: 50px;">
+            https://emqx-enterprise-docs-en.readthedocs.io/en/latest/cluster.html
+          </p>
+
+          <aside class="notes">
+            <ul>
+              <li>
+                Odporność na "wyciągnięcie wtyczki" - więcej niż jedna maszyna
+              </li>
+              <li>
+                wszystkie maszyny łączą się w klaster za pomocą własnego
+                protokołu
+              </li>
+              <li>można traktować jak jedną maszynę</li>
+              <li>wołanie procesów z innego node lokalnie</li>
+              <li>remsh</li>
+              <li>bezproblemowe skalowanie</li>
+              <li>
+                Rozproszony system - bardzo trudny problem rozwiązany za nas
+              </li>
+              <li>Mnesia, synchronizacja danych w klastrze</li>
+              <li>Czy ten temat kończy się tutaj? (i do problemów)</li>
+            </ul>
+          </aside>
+        </section>
 
         <section>
           <h2>Siła nawyku</h2>
@@ -525,31 +580,6 @@
               <li>
                 Wzorce
               </li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <h3>Rozejść się!</h3>
-          <img
-            style="border: none; box-shadow: none;"
-            src="/images/clustering.png"
-          />
-          <p style="font-size: 0.35em; margin-top: 50px;">
-            https://emqx-enterprise-docs-en.readthedocs.io/en/latest/cluster.html
-          </p>
-
-          <aside class="notes">
-            <ul>
-              <li>
-                To rozwiązanie okazuje się bardzo niewydajne
-              </li>
-              <li>Współbieżność nie jest wykorzystana wcale</li>
-              <li>
-                Message passing - kolejka wiadomości na ArchiveService rośnie
-              </li>
-              <li>Przeciążenie systemu</li>
-              <li>Typowy błąd początkującego (i nie tylko)</li>
             </ul>
           </aside>
         </section>
