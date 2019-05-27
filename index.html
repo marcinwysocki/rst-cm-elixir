@@ -252,10 +252,45 @@
         </section>
 
         <section>
-          <h3>Język funkcyjny</h3>
-          <pre style="box-shadow: none; font-size: 11px;">
-                        <code data-trim data-noescape class="elixir">
-                        przykład                       </code></pre>
+          <section>
+            <h3>Język funkcyjny</h3>
+            <pre style="box-shadow: none; font-size: 16px;">
+                <code data-trim data-noescape class="elixir">
+                  def fetch!(key_id) do
+                    case Cache.get(key_id) do
+                      {:ok, :miss} ->
+                        Logger.debug("[#{__MODULE__}] Repeated request for unknown key id: #{key_id}")
+                        nil
+                    
+                      {:ok, nil} ->
+                        cache_miss(key_id)
+                      
+                        call_external_api()
+                        |> get_all_keys()
+                        |> cache_results()
+                        |> get_requested_key(key_id)
+                      
+                      {:ok, key} ->
+                        key
+                      
+                      _ ->
+                        nil
+                    end
+                  end
+                </code>
+              </pre>
+          </section>
+
+          <section>
+            <pre style="box-shadow: none; font-size: 20px;">
+              <code data-trim data-noescape class="elixir">
+   defp parse_context(:null), do: :null
+   defp parse_context(""), do: :null
+   defp parse_context(context) when is_binary(context), do: context
+   defp parse_context(_), do: raise ArgumentError
+              </code>
+            </pre>
+          </section>
 
           <aside class="notes">
             <ul>
@@ -489,7 +524,10 @@
               </li>
               <li>let it crash</li>
               <li>działa dobrze, jak się dobrze zrobi</li>
-              <li>Przykład błędu (MB): restartowanie procesów, ale wiszące połączenia</li>
+              <li>
+                Przykład błędu (MB): restartowanie procesów, ale wiszące
+                połączenia
+              </li>
             </ul>
           </aside>
         </section>
